@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project name="spash" basedir="." default="jar">
+  <description>2D overlap library</description>
+
+  <property name="project.name" value="spash" />
+  <property name="version" value="0.1" />
+  <property name="jar.file" value="${project.name}-${version}.jar" />
+  
+  <property name="target.dir" location="target" />
+  <property name="classes.dir" location="${target.dir}/classes" />
+  <property name="test.classes.dir" location="${target.dir}/test-classes" />
+	<property name="javadoc.dir" location="${target.dir}/javadoc"/>
+  <property name="src.dir" location="src" />
+  <property name="test.src.dir" location="test" />
+
+  <path id="test.classpath">
+    <pathelement location="${test.classes.dir}" />
+    <pathelement location="${classes.dir}" />
+    <pathelement location="lib/junit-4.1.jar" />
+    <pathelement location="lib/mockito-all-1.6.jar" />
+  </path>
+
+  <target name="compile">
+    <mkdir dir="${classes.dir}" />
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" />
+  </target>
+
+  <target name="compile-tests" depends="compile">
+    <mkdir dir="${test.classes.dir}" />
+    <javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" debug="true">
+      <classpath refid="test.classpath" />
+    </javac>
+  </target>
+
+  <target name="test" depends="compile-tests">
+    <junit haltonfailure="true">
+      <classpath refid="test.classpath" />
+      <formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${test.classes.dir}" includes="**/*Test.class"/>
+			</batchtest>
+    </junit>
+  </target>
+
+  <target name="jar" depends="clean, compile, test">
+    <mkdir dir="${target.dir}" />
+    <jar destfile="${target.dir}/${jar.file}" basedir="${classes.dir}" />
+  </target>
+
+  <target name="javadoc">
+    <mkdir dir="${javadoc.dir}" />
+    <javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}" />
+  </target>
+
+  <target name="clean">
+    <delete dir="${target.dir}" />
+  </target>
+</project>

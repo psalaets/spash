@@ -1,0 +1,49 @@
+spash - basic 2D shape overlap library
+======================================
+
+Requirements
+------------
+
+- Java 5 or higher
+
+License
+-------
+
+Most of the code is under the MIT license - see LICENSE.  The parts under other
+licenses (BSD) or by other people have license blocks at the top of the relevant
+source files.
+
+Usage in a nutshell
+-------------------
+
+1. extend org.spash.DefaultBody or implement org.spash.Body
+2. create a Space with a BroadPhase and a BodyOverlapper
+3. (optional) add OverlapListeners to Space
+4. (optional) add PairFilters to Space
+5. add Bodies to Space
+6. call Space#processOverlaps
+7. clear Space
+8. repeat 5-7
+
+Thanks
+------
+
+Ideas, math and code came from:
+
+Raigan Burns and Mare Sheppard - N tutorials  
+http://www.metanetsoftware.com/technique.html
+
+Kevin Glass - phys2d  
+http://www.cokeandcode.com/phys2d/
+
+Jacco Bikker - grid traversal  
+http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_4_Spatial_Subdivisions.shtml
+
+John Amanatides and Andrew Woo - grid traversal  
+http://www.cs.yorku.ca/~amana/research/grid.pdf
+
+Laurent Cozic - shape overlap checks
+http://www.codeproject.com/KB/GDI-plus/PolygonCollision.aspx
+
+Tim Kerchmar - spatial hashing
+http://nightschool.near-time.net/news/2007/8/8/broad-or-narrow-the-sword-is-sharp
