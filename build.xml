@@ -36,9 +36,9 @@
     <junit haltonfailure="true">
       <classpath refid="test.classpath" />
       <formatter type="brief" usefile="false" />
-			<batchtest>
-				<fileset dir="${test.classes.dir}" includes="**/*Test.class"/>
-			</batchtest>
+      <batchtest>
+        <fileset dir="${test.classes.dir}" includes="**/*Test.class"/>
+      </batchtest>
     </junit>
   </target>
 
