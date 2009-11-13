@@ -5,6 +5,7 @@
   <property name="project.name" value="spash" />
   <property name="version" value="0.1" />
   <property name="jar.file" value="${project.name}-${version}.jar" />
+  <property name="javadoc.zip" value="${project.name}-${version}-javadoc.zip" />
   
   <property name="target.dir" location="target" />
   <property name="classes.dir" location="${target.dir}/classes" />
@@ -50,6 +51,9 @@
   <target name="javadoc">
     <mkdir dir="${javadoc.dir}" />
     <javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}" />
+    <zip destfile="${target.dir}/${javadoc.zip}">
+      <zipfileset dir="${javadoc.dir}"/>
+    </zip>
   </target>
 
   <target name="clean">
