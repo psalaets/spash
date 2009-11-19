@@ -10,7 +10,7 @@
   <property name="target.dir" location="target" />
   <property name="classes.dir" location="${target.dir}/classes" />
   <property name="test.classes.dir" location="${target.dir}/test-classes" />
-	<property name="javadoc.dir" location="${target.dir}/javadoc"/>
+  <property name="javadoc.dir" location="${target.dir}/javadoc"/>
   <property name="src.dir" location="src" />
   <property name="test.src.dir" location="test" />
 
