@@ -50,7 +50,7 @@ public strictfp class SpatialHash implements BroadPhase {
     public void add(Body body) {
         Span span = spanFactory.createSpanFor(body.getShape());
         for(GridCoordinate coord : span.getCoordinates(cellSize, cellSize)) {
-            getCellAt(coord).add(body);
+            cellAt(coord).add(body);
         }
     }
 
@@ -60,7 +60,7 @@ public strictfp class SpatialHash implements BroadPhase {
      * @param coord Location of the cell to get
      * @return Cell at coord, never null
      */
-    private Cell getCellAt(GridCoordinate coord) {
+    private Cell cellAt(GridCoordinate coord) {
         Cell cell = hash.get(coord);
         if(cell == null) {
             cell = new Cell();
