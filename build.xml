@@ -3,7 +3,7 @@
   <description>2D overlap library</description>
 
   <property name="project.name" value="spash" />
-  <property name="version" value="0.1" />
+  <property name="version" value="0.2" />
   <property name="jar.file" value="${project.name}-${version}.jar" />
   <property name="javadoc.zip" value="${project.name}-${version}-javadoc.zip" />
   
