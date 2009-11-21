@@ -23,7 +23,14 @@ public class BroadTestHelper {
      * Turns some pairs into a set.
      */
     public static Set<Pair> set(Pair... pairs) {
-        return new HashSet<Pair>(Arrays.asList(pairs));
+        return set(Arrays.asList(pairs));
+    }
+
+    /**
+     * Turns some pairs into a set.
+     */
+    public static Set<Pair> set(Collection<Pair> pairs) {
+        return new HashSet<Pair>(pairs);
     }
     
     /**

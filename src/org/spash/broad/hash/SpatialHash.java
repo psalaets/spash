@@ -1,10 +1,8 @@
 package org.spash.broad.hash;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,9 +13,8 @@ import org.spash.Pair;
 /**
  * Spatial hash implementation.
  */
-//TODO make a Cell class?
 public strictfp class SpatialHash implements BroadPhase {
-    private Map<GridCoordinate, List<Body>> hash;
+    private Map<GridCoordinate, Cell> hash;
     private int cellSize;
     private SpanFactory spanFactory;
 
@@ -33,39 +30,21 @@ public strictfp class SpatialHash implements BroadPhase {
         if(cellSize <= 0) throw new IllegalArgumentException("cellSize must be > 0");
         this.spanFactory = spanFactory;
         this.cellSize = cellSize;
-        hash = new HashMap<GridCoordinate, List<Body>>();
+        hash = new HashMap<GridCoordinate, Cell>();
     }
 
     public Set<Pair> findPairs() {
         Set<Pair> pairs = new HashSet<Pair>();
-        for(List<Body> cell : populatedCells()) {
-            if(hasAtLeastOnePair(cell)) {
-                collectPairs(cell, pairs);
+        for(Cell cell : populatedCells()) {
+            if(cell.hasPairs()) {
+                pairs.addAll(cell.getPairs());
             }
         }
         return pairs;
     }
 
-    private Collection<List<Body>> populatedCells() {
+    private Collection<Cell> populatedCells() {
         return hash.values();
-    }
-
-    private boolean hasAtLeastOnePair(List<Body> cell) {
-        return cell.size() > 1;
-    }
-
-    /**
-     * Adds all pairs from a body list to a pair set.
-     * 
-     * @param bodies Bodies to add
-     * @param pairs Pairs from the body list
-     */
-    private void collectPairs(List<Body> bodies, Set<Pair> pairs) {
-        for(int i = 0; i < bodies.size(); i++) {
-            for(int j = i + 1; j < bodies.size(); j++) {
-                pairs.add(new Pair(bodies.get(i), bodies.get(j)));
-            }
-        }
     }
 
     public void add(Body body) {
@@ -81,10 +60,10 @@ public strictfp class SpatialHash implements BroadPhase {
      * @param coord Location of the cell to get
      * @return Cell at coord, never null
      */
-    private List<Body> getCellAt(GridCoordinate coord) {
-        List<Body> cell = hash.get(coord);
+    private Cell getCellAt(GridCoordinate coord) {
+        Cell cell = hash.get(coord);
         if(cell == null) {
-            cell = new ArrayList<Body>();
+            cell = new Cell();
             hash.put(coord, cell);
         }
         return cell;
