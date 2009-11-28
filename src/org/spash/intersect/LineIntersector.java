@@ -1,5 +1,6 @@
 package org.spash.intersect;
 
+import org.spash.ROVector2f;
 import org.spash.Vector2f;
 import org.spash.intersect.IntersectionState.Colinear;
 import org.spash.intersect.IntersectionState.Intersecting;
@@ -43,5 +44,25 @@ public class LineIntersector {
             return new Intersecting(point);
         }
         return new None();
+    }
+
+    /**
+     * Given a point that is on the same line as a line segment, tells if that
+     * point is between the start and end points of the line segment.
+     * 
+     * @param point
+     * @param segmentStart
+     * @param segmentEnd
+     * @return true if point is within line segment, false otherwise
+     */
+    public boolean isPointWithinColinearSegment(ROVector2f point, ROVector2f segmentStart, ROVector2f segmentEnd) {
+        if(segmentStart.getX() != segmentEnd.getX()) {
+            if(segmentStart.getX() <= point.getX() && point.getX() <= segmentEnd.getX()) return true;
+            if(segmentStart.getX() >= point.getX() && point.getX() >= segmentEnd.getX()) return true;
+        } else {
+            if(segmentStart.getY() <= point.getY() && point.getY() <= segmentEnd.getY()) return true;
+            if(segmentStart.getY() >= point.getY() && point.getY() >= segmentEnd.getY()) return true;
+        }
+        return false;
     }
 }
