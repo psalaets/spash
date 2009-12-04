@@ -31,7 +31,7 @@ public strictfp class Rect extends AbstractShape implements Shape {
     /**
      * Gets the vertices of this rect.
      * 
-     * @return vertices
+     * @return vertices, starting at top-left and going clockwise
      */
     public ROVector2f[] getVertices() {
         float halfWidth = width / 2;

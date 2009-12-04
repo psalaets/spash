@@ -3,7 +3,6 @@ package org.spash.shape;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.spash.shape.ShapeTestHelper.assertVectorBagsEqual;
 import static org.spash.shape.ShapeTestHelper.list;
 
 import org.junit.Test;
@@ -59,16 +58,16 @@ public class RectTest {
     }
 
     @Test
-    public void Vertices_ShouldBeCornersOfRect() {
+    public void Vertices_ShouldBeCornersOfRectInClockwiseOrderStartingAtTopLeft() {
         Rect rect = new Rect(1, 1, 2, 2);
 
         ROVector2f[] vertices = rect.getVertices();
 
-        assertVectorBagsEqual(list(
+        assertEquals(list(
                 new Vector2f(0, 0),
-                new Vector2f(0, 2),
+                new Vector2f(2, 0),
                 new Vector2f(2, 2),
-                new Vector2f(2, 0)), list(vertices));
+                new Vector2f(0, 2)), list(vertices));
     }
 
     @Test
@@ -118,20 +117,20 @@ public class RectTest {
         Rect rect = new Rect(1, 1, 2, 2);
 
         ROVector2f[] vertices = rect.getVertices();
-        assertVectorBagsEqual(list(
+        assertEquals(list(
                 new Vector2f(0, 0),
-                new Vector2f(0, 2),
+                new Vector2f(2, 0),
                 new Vector2f(2, 2),
-                new Vector2f(2, 0)), list(vertices));
+                new Vector2f(0, 2)), list(vertices));
 
         rect.moveBy(new Vector2f(2, 3));
 
         vertices = rect.getVertices();
-        assertVectorBagsEqual(list(
+        assertEquals(list(
                 new Vector2f(2, 3),
-                new Vector2f(2, 5),
+                new Vector2f(4, 3),
                 new Vector2f(4, 5),
-                new Vector2f(4, 3)), list(vertices));
+                new Vector2f(2, 5)), list(vertices));
     }
 
     @Test
@@ -150,20 +149,20 @@ public class RectTest {
         Rect rect = new Rect(1, 1, 2, 2);
 
         ROVector2f[] vertices = rect.getVertices();
-        assertVectorBagsEqual(list(
+        assertEquals(list(
                 new Vector2f(0, 0),
-                new Vector2f(0, 2),
+                new Vector2f(2, 0),
                 new Vector2f(2, 2),
-                new Vector2f(2, 0)), list(vertices));
+                new Vector2f(0, 2)), list(vertices));
 
         rect.setPosition(new Vector2f(3, 4));
 
         vertices = rect.getVertices();
-        assertVectorBagsEqual(list(
+        assertEquals(list(
                 new Vector2f(2, 3),
-                new Vector2f(2, 5),
                 new Vector2f(4, 3),
-                new Vector2f(4, 5)), list(vertices));
+                new Vector2f(4, 5),
+                new Vector2f(2, 5)), list(vertices));
     }
 
     @Test
