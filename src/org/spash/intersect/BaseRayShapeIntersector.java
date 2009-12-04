@@ -45,13 +45,18 @@ public abstract class BaseRayShapeIntersector implements RayShapeIntersector {
     //assumes ray and endpoints are colinear
     private ROVector2f[] endpointsWithinRay(Ray ray, ROVector2f start, ROVector2f end) {
         ROVector2f[] possibleIntersects = new ROVector2f[2]; 
-        if(intersector.isPointWithinColinearSegment(start, ray.getStart(), ray.getEnd())) {
+        if(pointIsWithinRay(start, ray)) {
             possibleIntersects[0] = start;
         }
-        if(intersector.isPointWithinColinearSegment(end, ray.getStart(), ray.getEnd())) {
+        if(pointIsWithinRay(end, ray)) {
             possibleIntersects[1] = end;
         }
         return possibleIntersects;
+    }
+
+    //assumes ray and point are colinear
+    protected boolean pointIsWithinRay(ROVector2f point, Ray ray) {
+        return intersector.isPointWithinColinearSegment(point, ray.getStart(), ray.getEnd());
     }
 
     //assumes line and point are colinear
