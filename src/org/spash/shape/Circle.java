@@ -85,6 +85,16 @@ public strictfp class Circle extends AbstractShape implements Shape {
         return lineFromCenter;
     }
 
+    /**
+     * Tells if this circle contains a point.
+     *
+     * @param point
+     * @return true if circle contains point, false otherwise
+     */
+    public boolean contains(ROVector2f point) {
+        return getPosition().distance(point) <= radius;
+    }
+
     @Override
     public String toString() {
         return "[Circle r:" + radius + " at (" + getPosition().getX() + ", " + getPosition().getY() + ")]";

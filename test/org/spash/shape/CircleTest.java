@@ -1,6 +1,8 @@
 package org.spash.shape;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.spash.shape.ShapeTestHelper.*;
 
 import org.junit.Test;
@@ -213,5 +215,29 @@ public class CircleTest {
         Vector2f normal = circle.normalAlongLineToClosest(points);
 
         assertEquals(new Vector2f(1, 0), normal);
+    }
+
+    @Test
+    public void Contains_PointIsInsideCircle_ReturnsTrue() {
+        Circle c = new Circle(5, 5, 10);
+        Vector2f point = new Vector2f(4, 4);
+
+        assertTrue(c.contains(point));
+    }
+
+    @Test
+    public void Contains_PointIsOnCircleEdge_ReturnsTrue() {
+        Circle c = new Circle(5, 5, 10);
+        Vector2f point = new Vector2f(15, 5);
+
+        assertTrue(c.contains(point));
+    }
+
+    @Test
+    public void Contains_PointIsOutsideOfCircle_ReturnsFalse() {
+        Circle c = new Circle(5, 5, 10);
+        Vector2f point = new Vector2f(40, 40);
+
+        assertFalse(c.contains(point));
     }
 }
