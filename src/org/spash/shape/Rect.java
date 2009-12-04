@@ -84,6 +84,20 @@ public strictfp class Rect extends AbstractShape implements Shape {
         return getPosition().getY() - (height / 2);
     }
 
+    /**
+     * Tells if this rect contains a point.
+     *
+     * @param point
+     * @return true if this contains point, false otherwise
+     */
+    public boolean contains(ROVector2f point) {
+        if(point.getX() > getMaxX()) return false;
+        if(point.getX() < getMinX()) return false;
+        if(point.getY() > getMaxY()) return false;
+        if(point.getY() < getMinY()) return false;
+        return true;
+    }
+
     @Override
     public String toString() {
         return "[Rect " + width + " x " + height + " at (" + getPosition().getX() + ", " + getPosition().getY() + ")]";

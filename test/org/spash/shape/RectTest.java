@@ -1,6 +1,8 @@
 package org.spash.shape;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.spash.shape.ShapeTestHelper.assertVectorBagsEqual;
 import static org.spash.shape.ShapeTestHelper.list;
 
@@ -190,5 +192,29 @@ public class RectTest {
         Rect rect = new Rect(1, 2, 4, 5);
 
         assertEquals(4.5f, rect.getMaxY());
+    }
+
+    @Test
+    public void Contains_PointIsInRect_ReturnsTrue() {
+        Rect rect = new Rect(1, 2, 5, 5);
+        Vector2f point = new Vector2f(2, 3);
+
+        assertTrue(rect.contains(point));
+    }
+
+    @Test
+    public void Contains_PointIsOnRectEdge_ReturnsTrue() {
+        Rect rect = new Rect(1, 2, 5, 5);
+        Vector2f point = new Vector2f(3.5f, 3);
+
+        assertTrue(rect.contains(point));
+    }
+
+    @Test
+    public void Contains_PointIsOutsideOfRect_ReturnsFalse() {
+        Rect rect = new Rect(1, 2, 5, 5);
+        Vector2f point = new Vector2f(10, 10);
+
+        assertFalse(rect.contains(point));
     }
 }
