@@ -15,5 +15,5 @@ public interface RayShapeIntersector {
      * @param shape
      * @return Intersection point, if any, otherwise null.
      */
-  ROVector2f intersect(Ray ray, Shape shape);
+    ROVector2f intersect(Ray ray, Shape shape);
 }
