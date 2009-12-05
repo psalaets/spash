@@ -16,4 +16,11 @@ public interface RayShapeIntersector {
      * @return Intersection point, if any, otherwise null.
      */
     ROVector2f intersect(Ray ray, Shape shape);
+    /**
+     * Tells if this intersector can handle a certain shape.
+     * 
+     * @param shapeType
+     * @return true if this intersector can handle shapeType, false otherwise
+     */
+    boolean canHandle(Class<? extends Shape> shapeType);
 }
