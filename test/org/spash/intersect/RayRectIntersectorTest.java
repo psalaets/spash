@@ -2,6 +2,7 @@ package org.spash.intersect;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -164,5 +165,10 @@ public class RayRectIntersectorTest {
         Ray ray = new Ray(new Vector2f(45, 50), new Vector2f(80, 50));
 
         assertEquals(new Vector2f(45, 50), intersector.intersect(ray, rect));
+    }
+    
+    @Test
+    public void HandlesRects() {
+        assertTrue(intersector.canHandle(Rect.class));
     }
 }

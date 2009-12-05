@@ -2,6 +2,7 @@ package org.spash.intersect;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,7 +11,6 @@ import org.spash.Vector2f;
 import org.spash.ray.Ray;
 import org.spash.shape.Circle;
 
-//TODO clean this up, check test names, simplify if possible and commit test along with CUT
 public class RayCircleIntersectorTest {
     Circle circle;
     RayCircleIntersector intersector;
@@ -130,5 +130,10 @@ public class RayCircleIntersectorTest {
         Ray ray = new Ray(new Vector2f(55, 50), new Vector2f(80, 50));
 
         assertEquals(new Vector2f(55, 50), intersector.intersect(ray, circle));
+    }
+    
+    @Test
+    public void HandlesCircles() {
+        assertTrue(intersector.canHandle(Circle.class));
     }
 }

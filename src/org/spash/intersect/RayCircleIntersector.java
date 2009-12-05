@@ -102,4 +102,8 @@ public strictfp class RayCircleIntersector extends BaseRayShapeIntersector {
     private float pythagorean(float a, float c) {
         return (float)Math.sqrt((c * c) - (a * a));
     }
+
+    public boolean canHandle(Class<? extends Shape> shapeType) {
+        return shapeType == Circle.class;
+    }
 }

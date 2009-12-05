@@ -2,6 +2,7 @@ package org.spash.intersect;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -123,5 +124,10 @@ public class RayLineIntersectorTest {
         Ray ray = new Ray(new Vector2f(6, 6), new Vector2f(7, 7));
 
         assertEquals(new Vector2f(6, 6), intersector.intersect(ray, line));
+    }
+    
+    @Test
+    public void HandlesLines() {
+        assertTrue(intersector.canHandle(Line.class));
     }
 }

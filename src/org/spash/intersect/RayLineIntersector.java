@@ -13,4 +13,8 @@ public class RayLineIntersector extends BaseRayShapeIntersector {
         Line line = (Line)shape;
         return findIntersectionPoint(ray, line.getP1(), line.getP2());
     }
+    
+    public boolean canHandle(Class<? extends Shape> shapeType) {
+        return shapeType == Line.class;
+    }
 }

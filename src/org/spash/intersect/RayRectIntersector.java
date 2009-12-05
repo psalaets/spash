@@ -24,4 +24,8 @@ public class RayRectIntersector extends BaseRayShapeIntersector {
             return ray.getStart().closest(top, right, bottom, left);
         }
     }
+    
+    public boolean canHandle(Class<? extends Shape> shapeType) {
+        return shapeType == Rect.class;
+    }
 }
