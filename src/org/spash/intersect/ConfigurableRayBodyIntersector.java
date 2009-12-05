@@ -48,4 +48,14 @@ public class ConfigurableRayBodyIntersector implements RayBodyIntersector {
         register(Rect.class, new RayRectIntersector());
         register(Line.class, new RayLineIntersector());
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("Configurable Ray Body Intersector with:\n");
+        for(Map.Entry<Class<? extends Shape>, RayShapeIntersector> entry : intersectors.entrySet()) {
+            builder.append(entry.getKey()).append(" -> ");
+            builder.append(entry.getValue()).append("\n");
+        }
+        return builder.toString();
+    }
 }
