@@ -28,70 +28,70 @@ public class RayCircleIntersectorTest {
     }
 
     @Test
-    public void RayGoesThroughCircleFromLeft_ReturnsRayContactAtIntersectPoint() {
+    public void RayGoesThroughCircleFromLeft_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(10, 50), new Vector2f(70, 50));
 
         assertEquals(new Vector2f(45, 50), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayGoesThroughCircleFromRight_ReturnsRayContactAtIntersectPoint() {
+    public void RayGoesThroughCircleFromRight_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(70, 50), new Vector2f(10, 50));
 
         assertEquals(new Vector2f(55, 50), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayGoesThroughCircleFromAbove_ReturnsRayContactAtIntersectPoint() {
+    public void RayGoesThroughCircleFromAbove_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(50, 10), new Vector2f(50, 70));
 
         assertEquals(new Vector2f(50, 45), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayGoesThroughCircleFromBelow_ReturnsRayContactAtIntersectPoint() {
+    public void RayGoesThroughCircleFromBelow_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(50, 70), new Vector2f(50, 10));
 
         assertEquals(new Vector2f(50, 55), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayStopsInCircleFromLeft_ReturnsRayContactAtIntersectPoint() {
+    public void RayStopsInCircleFromLeft_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(10, 50), new Vector2f(50, 50));
 
         assertEquals(new Vector2f(45, 50), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayStopsInCircleFromRight_ReturnsRayContactAtIntersectPoint() {
+    public void RayStopsInCircleFromRight_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(70, 50), new Vector2f(50, 50));
 
         assertEquals(new Vector2f(55, 50), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayStopsInCircleFromAbove_ReturnsRayContactAtIntersectPoint() {
+    public void RayStopsInCircleFromAbove_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(50, 10), new Vector2f(50, 50));
 
         assertEquals(new Vector2f(50, 45), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayStopsInCircleFromBelow_ReturnsRayContactAtIntersectPoint() {
+    public void RayStopsInCircleFromBelow_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(50, 70), new Vector2f(50, 50));
 
         assertEquals(new Vector2f(50, 55), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayIsTangentAlongTop_ReturnsRayContactAtIntersectPoint() {
+    public void RayIsTangentAlongTop_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(10, 45), new Vector2f(70, 45));
 
         assertEquals(new Vector2f(50, 45), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayIsTangentAlongBottom_ReturnsRayContactAtIntersectPoint() {
+    public void RayIsTangentAlongBottom_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(10, 55), new Vector2f(70, 55));
 
         assertEquals(new Vector2f(50, 55), intersector.intersect(ray, circle));
@@ -119,14 +119,14 @@ public class RayCircleIntersectorTest {
     }
 
     @Test
-    public void RayStartsInsideCircle_ReturnsRayContactAtRayOrigin() {
+    public void RayStartsInsideCircle_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(48, 50), new Vector2f(80, 50));
 
         assertEquals(new Vector2f(48, 50), intersector.intersect(ray, circle));
     }
 
     @Test
-    public void RayStartsAtCircleEdge_ReturnsRayContactAtRayOrigin() {
+    public void RayStartsAtCircleEdge_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(55, 50), new Vector2f(80, 50));
 
         assertEquals(new Vector2f(55, 50), intersector.intersect(ray, circle));

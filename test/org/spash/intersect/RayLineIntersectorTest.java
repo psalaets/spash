@@ -29,28 +29,28 @@ public class RayLineIntersectorTest {
     }
 
     @Test
-    public void RayGoesThroughLineFromLeft_ReturnsRayContactAtIntersectPoint() {
+    public void RayGoesThroughLineFromLeft_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(0, 7), new Vector2f(10, 7));
 
         assertEquals(new Vector2f(7, 7), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayGoesThroughLineFromRight_ReturnsRayContactAtIntersectPoint() {
+    public void RayGoesThroughLineFromRight_ReturnsPointAtIntersectPoint() {
         Ray ray = new Ray(new Vector2f(10, 7), new Vector2f(0, 7));
 
         assertEquals(new Vector2f(7, 7), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayStopsAtLineFromLeft_ReturnsRayContactAtRayEnd() {
+    public void RayStopsAtLineFromLeft_ReturnsPointAtRayEnd() {
         Ray ray = new Ray(new Vector2f(0, 6), new Vector2f(6, 6));
 
         assertEquals(new Vector2f(6, 6), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayStopsAtLineFromRight_ReturnsRayContactAtRayEnd() {
+    public void RayStopsAtLineFromRight_ReturnsPointAtRayEnd() {
         Ray ray = new Ray(new Vector2f(10, 6), new Vector2f(6, 6));
 
         assertEquals(new Vector2f(6, 6), intersector.intersect(ray, line));
@@ -71,21 +71,21 @@ public class RayLineIntersectorTest {
     }
 
     @Test
-    public void RayStartsOnLineStart_ReturnsRayContactAtRayOrigin() {
+    public void RayStartsOnLineStart_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(5, 5), new Vector2f(10, 5));
 
         assertEquals(new Vector2f(5, 5), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayStartsOnLineEnd_ReturnsRayContactAtRayOrigin() {
+    public void RayStartsOnLineEnd_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(8, 8), new Vector2f(10, 5));
 
         assertEquals(new Vector2f(8, 8), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayStartsOnLine_ReturnsRayContactAtRayOrigin() {
+    public void RayStartsOnLine_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(6, 6), new Vector2f(10, 6));
 
         assertEquals(new Vector2f(6, 6), intersector.intersect(ray, line));
@@ -99,28 +99,28 @@ public class RayLineIntersectorTest {
     }
 
     @Test
-    public void RayIsColinearAndOverlapsLine_ReturnsRayContactAtLinePointThatRayContains() {
+    public void RayIsColinearAndOverlapsLine_ReturnsPointAtLineEndPointThatRayContains() {
         Ray ray = new Ray(new Vector2f(0, 0), new Vector2f(6, 6));
 
         assertEquals(new Vector2f(5, 5), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayIsColinearAndContainsLine_ReturnsRayContactAtLinePointClosestToRayOrigin() {
+    public void RayIsColinearAndContainsLine_ReturnsPointAtLineEndPointClosestToRayOrigin() {
         Ray ray = new Ray(new Vector2f(0, 0), new Vector2f(10, 10));
 
         assertEquals(new Vector2f(5, 5), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayIsColinearAndLineContainsRayOrigin_ReturnsRayContactAtRayOrigin() {
+    public void RayIsColinearAndLineContainsRayOrigin_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(6, 6), new Vector2f(10, 10));
 
         assertEquals(new Vector2f(6, 6), intersector.intersect(ray, line));
     }
 
     @Test
-    public void RayIsColinearAndLineContainsEntireRay_ReturnsRayContactAtRayOrigin() {
+    public void RayIsColinearAndLineContainsEntireRay_ReturnsPointAtRayOrigin() {
         Ray ray = new Ray(new Vector2f(6, 6), new Vector2f(7, 7));
 
         assertEquals(new Vector2f(6, 6), intersector.intersect(ray, line));
