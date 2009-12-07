@@ -1,4 +1,4 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
@@ -6,10 +6,11 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.spash.Vector2f;
-import org.spash.intersect.IntersectionState.Colinear;
-import org.spash.intersect.IntersectionState.Intersecting;
-import org.spash.intersect.IntersectionState.None;
-import org.spash.intersect.IntersectionState.Parallel;
+import org.spash.ray.intersect.IntersectionState;
+import org.spash.ray.intersect.IntersectionState.Colinear;
+import org.spash.ray.intersect.IntersectionState.Intersecting;
+import org.spash.ray.intersect.IntersectionState.None;
+import org.spash.ray.intersect.IntersectionState.Parallel;
 
 public class IntersectionStateTest {
     @Test

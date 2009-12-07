@@ -1,4 +1,4 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.spash.Body;
 import org.spash.Vector2f;
 import org.spash.ray.Ray;
+import org.spash.ray.intersect.ConfigurableRayBodyIntersector;
 import org.spash.shape.Line;
 
 public class RayBodyIntersector_LineTest {

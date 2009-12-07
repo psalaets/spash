@@ -1,6 +1,7 @@
-package org.spash;
+package org.spash.ray;
 
-import org.spash.ray.Ray;
+import org.spash.Body;
+import org.spash.ROVector2f;
 
 /**
  * Finds the intersection of a ray and a body.

@@ -1,4 +1,4 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.spash.UnsupportedShapeException;
 import org.spash.Vector2f;
 import org.spash.ray.Ray;
+import org.spash.ray.intersect.ConfigurableRayBodyIntersector;
+import org.spash.ray.intersect.RayShapeIntersector;
 import org.spash.shape.Circle;
 import org.spash.shape.Line;
 import org.spash.shape.Rect;

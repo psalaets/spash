@@ -1,4 +1,4 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import org.spash.ROVector2f;
 import org.spash.Shape;

@@ -1,4 +1,4 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.spash.Vector2f;
+import org.spash.ray.intersect.LineIntersector;
 
 public class LineIntersector_IsPointWithinColinearSegmentTest {
     LineIntersector intersector;

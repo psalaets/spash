@@ -1,4 +1,4 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.spash.Vector2f;
 import org.spash.ray.Ray;
+import org.spash.ray.intersect.RayCircleIntersector;
 import org.spash.shape.Circle;
 
 public class RayCircleIntersectorTest {

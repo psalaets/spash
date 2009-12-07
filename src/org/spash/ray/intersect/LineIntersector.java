@@ -1,11 +1,11 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import org.spash.ROVector2f;
 import org.spash.Vector2f;
-import org.spash.intersect.IntersectionState.Colinear;
-import org.spash.intersect.IntersectionState.Intersecting;
-import org.spash.intersect.IntersectionState.None;
-import org.spash.intersect.IntersectionState.Parallel;
+import org.spash.ray.intersect.IntersectionState.Colinear;
+import org.spash.ray.intersect.IntersectionState.Intersecting;
+import org.spash.ray.intersect.IntersectionState.None;
+import org.spash.ray.intersect.IntersectionState.Parallel;
 
 /**
  * Does some math related to lines.

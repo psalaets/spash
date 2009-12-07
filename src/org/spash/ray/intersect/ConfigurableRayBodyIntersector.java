@@ -1,14 +1,14 @@
-package org.spash.intersect;
+package org.spash.ray.intersect;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.spash.Body;
 import org.spash.ROVector2f;
-import org.spash.RayBodyIntersector;
 import org.spash.Shape;
 import org.spash.UnsupportedShapeException;
 import org.spash.ray.Ray;
+import org.spash.ray.RayBodyIntersector;
 import org.spash.shape.Circle;
 import org.spash.shape.Line;
 import org.spash.shape.Rect;
