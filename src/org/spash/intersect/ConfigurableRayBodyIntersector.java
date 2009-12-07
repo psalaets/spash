@@ -38,8 +38,13 @@ public class ConfigurableRayBodyIntersector implements RayBodyIntersector {
     public boolean hasIntersectorFor(Class<? extends Shape> shapeType) {
         return intersectors.containsKey(shapeType);
     }
-    
+
     public ROVector2f intersect(Ray ray, Body body) {
+        Shape shape = body.getShape();
+        RayShapeIntersector intersector = intersectors.get(shape.getClass());
+        if(intersector != null) {
+            return intersector.intersect(ray, shape);
+        }
         throw new UnsupportedShapeException("No intersector registered for " + body.getShape().getClass());
     }
     
