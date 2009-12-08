@@ -10,7 +10,7 @@ import org.spash.shape.Circle;
  * 
  * Algorithm from http://metanet.2.forumer.com/index.php?showtopic=17590
  */
-public class InfiniteRayVsCircleSolver {
+public strictfp class InfiniteRayVsCircleSolver {
     private Ray ray;
     private Circle circle;
     private Vector2f circleCenter;
