@@ -21,7 +21,7 @@ public interface RayBroadPhase {
      * 
      * @param body Body to add
      */
-    void addBody(Body body);
+    void add(Body body);
 
     /**
      * Clears all bodies from this ray broad phase.

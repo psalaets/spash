@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.spash.ROVector2f;
 import org.spash.Vector2f;
-import org.spash.shape.Line;
 
 
 /**
@@ -26,9 +25,9 @@ public strictfp class LineSpan extends BaseSpan implements Span {
     private int stepX;
     private int stepY;
 
-    public LineSpan(Line line) {
-        startPoint = new Vector2f(line.getP1());
-        endPoint = new Vector2f(line.getP2());
+    public LineSpan(ROVector2f start, ROVector2f end) {
+        startPoint = new Vector2f(start);
+        endPoint = new Vector2f(end);
         direction = getDirection(startPoint, endPoint);
 
         tmax = new Vector2f();

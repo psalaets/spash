@@ -5,10 +5,8 @@ import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
 import org.spash.Shape;
-import org.spash.broad.hash.DefaultSpanFactory;
-import org.spash.broad.hash.LineSpan;
-import org.spash.broad.hash.RectSpan;
-import org.spash.broad.hash.SpanFactory;
+import org.spash.Vector2f;
+import org.spash.ray.Ray;
 import org.spash.shape.Circle;
 import org.spash.shape.Line;
 import org.spash.shape.Rect;
@@ -20,7 +18,7 @@ public class DefaultSpanFactoryTest {
         SpanFactory factory = new DefaultSpanFactory();
         Rect rect = new Rect(0, 0, 10, 10);
 
-        assertTrue(factory.createSpanFor(rect) instanceof RectSpan);
+        assertTrue(factory.createShapeSpan(rect) instanceof RectSpan);
     }
 
     @Test
@@ -28,7 +26,7 @@ public class DefaultSpanFactoryTest {
         SpanFactory factory = new DefaultSpanFactory();
         Circle circle = new Circle(0, 0, 5);
 
-        assertTrue(factory.createSpanFor(circle) instanceof RectSpan);
+        assertTrue(factory.createShapeSpan(circle) instanceof RectSpan);
     }
 
     @Test
@@ -36,14 +34,22 @@ public class DefaultSpanFactoryTest {
         SpanFactory factory = new DefaultSpanFactory();
         Line line = new Line(1, 2, 3, 4);
 
-        assertTrue(factory.createSpanFor(line) instanceof LineSpan);
+        assertTrue(factory.createShapeSpan(line) instanceof LineSpan);
     }
     
     @Test
-    public void GivenAnythingElseReturnsRectSpan() {
+    public void GivenAnyOtherShapeReturnsRectSpan() {
         SpanFactory factory = new DefaultSpanFactory();
         Shape shape = mock(Shape.class);
 
-        assertTrue(factory.createSpanFor(shape) instanceof RectSpan);
+        assertTrue(factory.createShapeSpan(shape) instanceof RectSpan);
+    }
+    
+    @Test
+    public void GivenRayReturnsLineSpan() {
+        SpanFactory factory = new DefaultSpanFactory();
+        Ray ray = new Ray(new Vector2f(), new Vector2f());
+
+        assertTrue(factory.createRaySpan(ray) instanceof LineSpan);
     }
 }

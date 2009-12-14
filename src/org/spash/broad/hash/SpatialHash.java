@@ -3,17 +3,20 @@ package org.spash.broad.hash;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.spash.Body;
 import org.spash.BroadPhase;
 import org.spash.Pair;
+import org.spash.ray.Ray;
+import org.spash.ray.RayBroadPhase;
 
 /**
  * Spatial hash implementation.
  */
-public strictfp class SpatialHash implements BroadPhase {
+public strictfp class SpatialHash implements BroadPhase, RayBroadPhase {
     private Map<GridCoordinate, Cell> hash;
     private int cellSize;
     private SpanFactory spanFactory;
@@ -48,7 +51,7 @@ public strictfp class SpatialHash implements BroadPhase {
     }
 
     public void add(Body body) {
-        Span span = spanFactory.createSpanFor(body.getShape());
+        Span span = spanFactory.createShapeSpan(body.getShape());
         for(GridCoordinate coord : span.getCoordinates(cellSize, cellSize)) {
             cellAt(coord).add(body);
         }
@@ -80,6 +83,10 @@ public strictfp class SpatialHash implements BroadPhase {
      */
     public int getCellSize() {
         return cellSize;
+    }
+
+    public List<Body> potentialBodies(Ray ray) {
+        return null;
     }
 
     @Override
