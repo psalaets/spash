@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.spash.TestHelper.bodyWith;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,7 +32,7 @@ public class SpatialHash_PotentialBodiesTest {
     public void RayCoversOneEmptyCell_ReturnsNoBodies() {
         Ray ray = new Ray(new Vector2f(1, 1), new Vector2f(2, 2));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertTrue(potentials.isEmpty());
     }
@@ -43,7 +43,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(body);
         Ray ray = new Ray(new Vector2f(1, 1), new Vector2f(2, 2));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(1, potentials.size());
         assertTrue(potentials.contains(body));
@@ -57,7 +57,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(body2);
         Ray ray = new Ray(new Vector2f(1, 1), new Vector2f(4, 1));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(2, potentials.size());
         assertTrue(potentials.contains(body));
@@ -72,7 +72,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(rightBody);
         Ray ray = new Ray(new Vector2f(1, 1), new Vector2f(25, 1));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(2, potentials.size());
         assertTrue(potentials.contains(leftBody));
@@ -87,7 +87,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(lowerBody);
         Ray ray = new Ray(new Vector2f(2, 20), new Vector2f(5, 20));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(1, potentials.size());
         assertTrue(potentials.contains(lowerBody));
@@ -101,7 +101,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(lowerBody);
         Ray ray = new Ray(new Vector2f(1, 1), new Vector2f(1, 25));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(2, potentials.size());
         assertTrue(potentials.contains(upperBody));
@@ -116,7 +116,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(rightBody);
         Ray ray = new Ray(new Vector2f(20, 2), new Vector2f(20, 5));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(1, potentials.size());
         assertTrue(potentials.contains(rightBody));
@@ -132,7 +132,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(lowerRightBody);
         Ray ray = new Ray(new Vector2f(1, 10), new Vector2f(21, 21));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(3, potentials.size());
         assertTrue(potentials.contains(upperLeftBody));
@@ -146,7 +146,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(body);
         Ray ray = new Ray(new Vector2f(65, 1), new Vector2f(225, 1));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertTrue(potentials.isEmpty());
     }
@@ -157,7 +157,7 @@ public class SpatialHash_PotentialBodiesTest {
         hash.add(body);
         Ray ray = new Ray(new Vector2f(18, 18), new Vector2f(22, 18));
 
-        List<Body> potentials = hash.potentialBodies(ray);
+        Collection<Body> potentials = hash.potentialBodies(ray);
 
         assertEquals(1, potentials.size());
         assertTrue(potentials.contains(body));

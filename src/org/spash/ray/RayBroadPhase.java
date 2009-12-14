@@ -1,6 +1,6 @@
 package org.spash.ray;
 
-import java.util.List;
+import java.util.Set;
 
 import org.spash.Body;
 
@@ -14,7 +14,7 @@ public interface RayBroadPhase {
      * @param ray The ray
      * @return List of bodies that could be touched by the ray
      */
-    List<Body> potentialBodies(Ray ray);
+    Set<Body> potentialBodies(Ray ray);
 
     /**
      * Adds a body to this ray broad phase.
