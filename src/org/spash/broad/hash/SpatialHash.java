@@ -1,5 +1,6 @@
 package org.spash.broad.hash;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -86,7 +87,17 @@ public strictfp class SpatialHash implements BroadPhase, RayBroadPhase {
     }
 
     public List<Body> potentialBodies(Ray ray) {
-        return null;
+        List<Body> bodies = new ArrayList<Body>();
+        Span span = spanFactory.createRaySpan(ray);
+        for(GridCoordinate coord : span.getCoordinates(cellSize, cellSize)) {
+            Cell cell = cellAt(coord);
+            for(Body body : cell.getBodies()) {
+                if(!bodies.contains(body)) {
+                    bodies.add(body);
+                }
+            }
+        }
+        return bodies;
     }
 
     @Override

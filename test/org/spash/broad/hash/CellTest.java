@@ -1,10 +1,12 @@
 package org.spash.broad.hash;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.spash.broad.BroadTestHelper.set;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.spash.Body;
@@ -21,6 +23,13 @@ public class CellTest {
     }
     
     @Test
+    public void StartsOffWithNoBodies() {
+        Cell cell = new Cell();
+        
+        assertEquals(0, cell.getBodies().size());
+    }
+    
+    @Test
     public void AfterAddingOneBody_HasNoPairs() {
         Cell cell = new Cell();
         Body body = mock(Body.class);
@@ -29,6 +38,16 @@ public class CellTest {
  
         assertEquals(0, cell.getPairs().size());
         assertFalse("cell should say it doesn't have pairs", cell.hasPairs());
+    }
+    
+    @Test
+    public void AfterAddingOneBody_HasOneBody() {
+        Cell cell = new Cell();
+        Body body = mock(Body.class);
+        
+        cell.add(body);
+ 
+        assertEquals(Arrays.asList(body), cell.getBodies());
     }
     
     @Test

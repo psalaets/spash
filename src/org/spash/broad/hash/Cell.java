@@ -39,4 +39,8 @@ public class Cell {
     public void add(Body body) {
         bodies.add(body);
     }
+
+    public List<Body> getBodies() {
+        return bodies;
+    }
 }
