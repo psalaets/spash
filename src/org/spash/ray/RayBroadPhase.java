@@ -12,7 +12,7 @@ public interface RayBroadPhase {
      * Gets bodies that might be touched by a ray.
      * 
      * @param ray The ray
-     * @return List of bodies that could be touched by the ray
+     * @return Bodies that could be touched by the ray
      */
     Set<Body> potentialBodies(Ray ray);
 
