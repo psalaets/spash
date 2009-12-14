@@ -5,9 +5,9 @@ import java.util.Map;
 
 import org.spash.Body;
 import org.spash.BodyOverlapper;
-import org.spash.CannotOverlapShapesException;
 import org.spash.Shape;
 import org.spash.Translation;
+import org.spash.UnsupportedShapeException;
 import org.spash.shape.Circle;
 import org.spash.shape.Line;
 import org.spash.shape.Rect;
@@ -80,7 +80,7 @@ public class ConfigurableBodyOverlapper implements BodyOverlapper {
         return overlappers.containsKey(new ShapeClassPair(class1, class2));
     }
 
-    public Translation getMinTranslation(Body body1, Body body2) throws CannotOverlapShapesException {
+    public Translation getMinTranslation(Body body1, Body body2) throws UnsupportedShapeException {
         Shape shape1 = body1.getShape();
         Shape shape2 = body2.getShape();
         ShapeClassPair pair = new ShapeClassPair(shape1.getClass(), shape2.getClass());
@@ -89,7 +89,7 @@ public class ConfigurableBodyOverlapper implements BodyOverlapper {
         if(overlapper != null) {
             return overlapper.getMinTranslation(shape1, shape2);
         }
-        throw new CannotOverlapShapesException(
+        throw new UnsupportedShapeException(
                 "No ShapeOverlapper registered for "
                         + shape1.getClass().getName() + " and "
                         + shape2.getClass().getName() + ".  See "

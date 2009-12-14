@@ -11,8 +11,8 @@ public interface BodyOverlapper {
      * @param body2 Second body
      * @return minimum translation needed to separate the bodies or null if the
      * bodies are not overlapping
-     * @throws CannotOverlapShapesException if we don't know how to find overlap
+     * @throws UnsupportedShapeException if we don't know how to find overlap
      * of the bodies
      */
-    Translation getMinTranslation(Body body1, Body body2) throws CannotOverlapShapesException;
+    Translation getMinTranslation(Body body1, Body body2) throws UnsupportedShapeException;
 }

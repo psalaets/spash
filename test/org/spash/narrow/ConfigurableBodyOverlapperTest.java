@@ -6,18 +6,16 @@ import static org.mockito.Mockito.when;
 import static org.spash.TestHelper.bodyWith;
 
 import org.junit.Test;
-import org.spash.CannotOverlapShapesException;
 import org.spash.Shape;
-import org.spash.narrow.ConfigurableBodyOverlapper;
-import org.spash.narrow.ShapeOverlapper;
+import org.spash.UnsupportedShapeException;
 import org.spash.shape.Circle;
 import org.spash.shape.Line;
 import org.spash.shape.Rect;
 
 
 public class ConfigurableBodyOverlapperTest {
-    @Test(expected = CannotOverlapShapesException.class)
-    public void GetMinTranslation_GivenBodiesWithShapesThatAreNotRegistered_ThrowsCannotOverlapShapesException() {
+    @Test(expected = UnsupportedShapeException.class)
+    public void GetMinTranslation_GivenBodiesWithShapesThatAreNotRegistered_ThrowsUnsupportedShapeException() {
         ConfigurableBodyOverlapper overlapper = new ConfigurableBodyOverlapper();
 
         overlapper.getMinTranslation(bodyWith(new Circle(0, 0, 1)), bodyWith(new Circle(0, 0, 1)));
