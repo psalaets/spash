@@ -91,4 +91,20 @@ public class RayContactTest {
 
         assertEquals(contact.hashCode(), contact.hashCode());
     }
+    
+    @Test
+    public void WhenContactIsAtRayStart_DistanceIsZero() {
+        Ray ray = new Ray(new Vector2f(0, 0), new Vector2f(2, 2));
+        RayContact contact = new RayContact(ray, mock(Body.class), new Vector2f(0, 0));
+
+        assertEquals(0f, contact.distanceFromRayStart());
+    }
+    
+    @Test
+    public void WhenContactIsNotAtRayStart_DistanceIsCalculated() {
+        Ray ray = new Ray(new Vector2f(0, 0), new Vector2f(2, 2));
+        RayContact contact = new RayContact(ray, mock(Body.class), new Vector2f(4, 3));
+
+        assertEquals(5f, contact.distanceFromRayStart());
+    }
 }

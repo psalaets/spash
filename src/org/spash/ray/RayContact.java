@@ -45,6 +45,14 @@ public class RayContact {
     public Ray getRay() {
         return ray;
     }
+    
+    /**
+     * Tells how far this contact is from its ray's start.
+     */
+    public float distanceFromRayStart() {
+        return location.distance(ray.getStart());
+    }
+
 
     @Override
     public boolean equals(Object o) {
