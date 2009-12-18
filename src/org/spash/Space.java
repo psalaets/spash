@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import org.spash.ray.Ray;
 import org.spash.ray.RayBodyIntersector;
@@ -38,8 +39,19 @@ public class Space {
         filters = new ArrayList<PairFilter>();
         
         intersector = noIntersector();
+        rayBroadPhase = noRayBroadPhase();
     }
 
+    private RayBroadPhase noRayBroadPhase() {
+        return new RayBroadPhase() {
+            public Set<Body> potentialBodies(Ray ray) {
+                throw new IllegalStateException("This space has not been equipped for ray queries, see Space#equipForRays");
+            }
+            public void add(Body body) {}
+            public void clear() {}
+        };
+    }
+    
     private RayBodyIntersector noIntersector() {
         return new RayBodyIntersector() {
             public ROVector2f intersect(Ray ray, Body body) {
@@ -139,7 +151,6 @@ public class Space {
      * @return Ray contacts, never null
      */
     public List<RayContact> allReached(Ray ray) {
-        if(rayBroadPhase == null) throw new IllegalStateException("This space has not been equipped for ray queries, see Space#equipForRays");
         List<RayContact> contacts = new ArrayList<RayContact>();
         for(Body body : rayBroadPhase.potentialBodies(ray)) {
             RayContact contact = isReached(body, ray);
