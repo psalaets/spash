@@ -9,10 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.spash.Body;
-import org.spash.BodyOverlapper;
-import org.spash.BroadPhase;
-import org.spash.Space;
+import org.spash.ray.RayBodyIntersector;
+import org.spash.ray.RayBroadPhase;
 import org.spash.shape.Circle;
 
 
@@ -27,6 +25,24 @@ public class SpaceTest {
     public void BroadPhaseCannotBeNull() {
         BodyOverlapper overlapper = mock(BodyOverlapper.class);
         new Space(null, overlapper);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void CannotEquipWithNullRayBroadPhase() {
+        BodyOverlapper overlapper = mock(BodyOverlapper.class);
+        BroadPhase broadPhase = mock(BroadPhase.class);
+        Space space = new Space(broadPhase, overlapper);
+
+        space.equipForRays(null, mock(RayBodyIntersector.class));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void CannotEquipWithNullRayIntersector() {
+        BodyOverlapper overlapper = mock(BodyOverlapper.class);
+        BroadPhase broadPhase = mock(BroadPhase.class);
+        Space space = new Space(broadPhase, overlapper);
+
+        space.equipForRays(mock(RayBroadPhase.class), null);
     }
 
     @Test
