@@ -165,11 +165,8 @@ public class Space {
     private Comparator<RayContact> byAscendingDistanceFromRayStart() {
         return new Comparator<RayContact>() {
             public int compare(RayContact c1, RayContact c2) {
-                if(c1.distanceFromRayStart() < c2.distanceFromRayStart()) {
-                    return -1;
-                } else if(c1.distanceFromRayStart() > c2.distanceFromRayStart()) {
-                    return 1;
-                }
+                if(c1.distanceFromRayStart() < c2.distanceFromRayStart()) return -1;
+                if(c1.distanceFromRayStart() > c2.distanceFromRayStart()) return 1;
                 return 0;
             }
         };
