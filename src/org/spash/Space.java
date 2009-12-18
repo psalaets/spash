@@ -120,6 +120,17 @@ public class Space {
     }
 
     /**
+     * Returns all contacts made by a ray.
+     *
+     * @param ray
+     * @return Ray contacts, never null
+     */
+    public List<RayContact> allReached(Ray ray) {
+        if(rayBroadPhase == null) throw new IllegalStateException("This space has not been equipped for ray queries, see Space#equipForRays");
+        return new ArrayList<RayContact>();
+    }
+
+    /**
      * Tells if a body is reached by a ray.
      *
      * @param body
