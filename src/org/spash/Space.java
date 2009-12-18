@@ -1,7 +1,10 @@
 package org.spash;
 
+import static java.util.Collections.sort;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 import org.spash.ray.Ray;
@@ -137,9 +140,30 @@ public class Space {
      */
     public List<RayContact> allReached(Ray ray) {
         if(rayBroadPhase == null) throw new IllegalStateException("This space has not been equipped for ray queries, see Space#equipForRays");
-        return new ArrayList<RayContact>();
+        List<RayContact> contacts = new ArrayList<RayContact>();
+        for(Body body : rayBroadPhase.potentialBodies(ray)) {
+            RayContact contact = isReached(body, ray);
+            if(contact != null) {
+                contacts.add(contact);
+            }
+        }
+        sort(contacts, byAscendingDistanceFromRayStart());
+        return contacts;
     }
 
+    private Comparator<RayContact> byAscendingDistanceFromRayStart() {
+        return new Comparator<RayContact>() {
+            public int compare(RayContact c1, RayContact c2) {
+                if(c1.distanceFromRayStart() < c2.distanceFromRayStart()) {
+                    return -1;
+                } else if(c1.distanceFromRayStart() > c2.distanceFromRayStart()) {
+                    return 1;
+                }
+                return 0;
+            }
+        };
+    }
+    
     /**
      * Tells if a body is reached by a ray.
      *
