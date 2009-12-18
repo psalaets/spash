@@ -33,6 +33,16 @@ public class Space {
         this.broadPhase = broadPhase;
         listeners = new ArrayList<OverlapListener>();
         filters = new ArrayList<PairFilter>();
+        
+        intersector = noIntersector();
+    }
+
+    private RayBodyIntersector noIntersector() {
+        return new RayBodyIntersector() {
+            public ROVector2f intersect(Ray ray, Body body) {
+                throw new IllegalStateException("This space has not been equipped for ray queries, see Space#equipForRays");
+            }
+        };
     }
 
     /**
@@ -138,7 +148,6 @@ public class Space {
      * @return Ray contact if the ray reaches the body, null otherwise
      */
     public RayContact isReached(Body body, Ray ray) {
-        if(intersector == null) throw new IllegalStateException("This space has not been equipped for ray queries, see Space#equipForRays");
         ROVector2f point = intersector.intersect(ray, body);
         if(point != null) {
             return new RayContact(ray, body, point);
