@@ -8,12 +8,16 @@ import java.util.Set;
 import org.spash.Body;
 import org.spash.BroadPhase;
 import org.spash.Pair;
+import org.spash.ray.Ray;
+import org.spash.ray.RayBroadPhase;
 
 
 /**
- * Broad phase that pairs each body with every other body.
+ * When acting as an overlaps broad phase, pairs each body with every other
+ * body.  When acting as a ray broad phase, considers every body as a potential
+ * body.
  */
-public class BruteForce implements BroadPhase {
+public class BruteForce implements BroadPhase, RayBroadPhase {
     private List<Body> bodies;
 
     public BruteForce() {
@@ -28,6 +32,10 @@ public class BruteForce implements BroadPhase {
             }
         }
         return pairs;
+    }
+    
+    public Set<Body> potentialBodies(Ray ray) {
+        return new HashSet<Body>(bodies);
     }
 
     public void add(Body body) {

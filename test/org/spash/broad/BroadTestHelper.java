@@ -1,8 +1,8 @@
 package org.spash.broad;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.spash.Pair;
 import org.spash.broad.hash.GridCoordinate;
 
 
@@ -20,17 +19,17 @@ import org.spash.broad.hash.GridCoordinate;
  */
 public class BroadTestHelper {
     /**
-     * Turns some pairs into a set.
+     * Turns some items into a set.
      */
-    public static Set<Pair> set(Pair... pairs) {
-        return set(Arrays.asList(pairs));
+    public static <T> Set<T> set(T... items) {
+        return set(Arrays.asList(items));
     }
 
     /**
-     * Turns some pairs into a set.
+     * Turns some items into a set.
      */
-    public static Set<Pair> set(Collection<Pair> pairs) {
-        return new HashSet<Pair>(pairs);
+    public static <T> Set<T> set(Collection<T> items) {
+        return new HashSet<T>(items);
     }
     
     /**
