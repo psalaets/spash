@@ -105,13 +105,23 @@ public class Space {
 
     public void addBodies(Collection<? extends Body> bodies) {
         for(Body body : bodies) {
-            if(body == null) throw new IllegalArgumentException("bodies cannot contain null");
-            broadPhase.add(body);
+            add(body);
+        }
+    }
+
+    private void add(Body body) {
+        if(body == null) throw new IllegalArgumentException("bodies cannot contain null");
+        broadPhase.add(body);
+        if(broadPhase != rayBroadPhase) {
+            rayBroadPhase.add(body);
         }
     }
 
     public void clearBodies() {
         broadPhase.clear();
+        if(broadPhase != rayBroadPhase) {
+            rayBroadPhase.clear();
+        }
     }
 
     public void addOverlapListener(OverlapListener listener) {
