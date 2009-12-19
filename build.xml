@@ -81,7 +81,7 @@
   </target>
   
   <target name="run-ray-demo" depends="compile-demos">
-		<java classname="org.spash.demo.RayDemo" fork="true">
+		<java classname="org.spash.RayDemo" fork="true">
 			<classpath refid="demo.classpath"/>
 		</java>
 	</target>

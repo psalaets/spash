@@ -38,7 +38,7 @@
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
  * OF SUCH DAMAGE.
  */
-package org.spash.demo;
+package org.spash;
 
 import java.awt.Color;
 import java.awt.Frame;

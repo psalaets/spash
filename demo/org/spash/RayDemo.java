@@ -1,4 +1,4 @@
-package org.spash.demo;
+package org.spash;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
