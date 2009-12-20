@@ -1,5 +1,5 @@
-spash - basic 2D shape overlap library
-======================================
+spash - basic 2D shape overlap and ray library
+==============================================
 
 Requirements
 ------------
@@ -13,17 +13,10 @@ Most of the code is under the MIT license - see LICENSE.  The parts under other
 licenses (BSD) or by other people have license blocks at the top of the relevant
 source files.
 
-Usage in a nutshell
--------------------
+Usage
+-----
 
-1. extend org.spash.DefaultBody or implement org.spash.Body
-2. create a Space with a BroadPhase and a BodyOverlapper
-3. (optional) add OverlapListeners to Space
-4. (optional) add PairFilters to Space
-5. add Bodies to Space
-6. call Space#processOverlaps
-7. clear Space
-8. repeat 5-7
+See http://wiki.github.com/psalaets/spash
 
 Thanks
 ------
