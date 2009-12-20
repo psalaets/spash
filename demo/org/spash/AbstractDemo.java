@@ -159,8 +159,9 @@ public abstract class AbstractDemo {
 
             public void keyReleased(KeyEvent e) {
                 pressed.remove(e.getKeyCode());
+                
+                AbstractDemo.this.keyHit(e.getKeyCode());
             }
-
         });
 
         frame.setVisible(true);
@@ -169,6 +170,12 @@ public abstract class AbstractDemo {
         strategy = frame.getBufferStrategy();
     }
 
+    /**
+     * Called when a key is released.
+     */
+    protected void keyHit(int keyCode) {
+    }
+    
     protected boolean isPressed(int keyCode) {
         return pressed.contains(keyCode);
     }

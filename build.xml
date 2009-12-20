@@ -81,8 +81,14 @@
   </target>
   
   <target name="run-ray-demo" depends="compile-demos">
-		<java classname="org.spash.RayDemo" fork="true">
-			<classpath refid="demo.classpath"/>
-		</java>
-	</target>
+    <java classname="org.spash.RayDemo" fork="true">
+      <classpath refid="demo.classpath"/>
+    </java>
+  </target>
+  
+  <target name="run-overlap-demo" depends="compile-demos">
+    <java classname="org.spash.OverlapDemo" fork="true">
+      <classpath refid="demo.classpath"/>
+    </java>
+  </target>
 </project>
