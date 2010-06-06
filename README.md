@@ -26,14 +26,14 @@ http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_4_Spatial_Sub
 John Amanatides and Andrew Woo - grid traversal  
 http://www.cs.yorku.ca/~amana/research/grid.pdf
 
-Laurent Cozic - shape overlap checks
+Laurent Cozic - shape overlap checks  
 http://www.codeproject.com/KB/GDI-plus/PolygonCollision.aspx
 
-Tim Kerchmar - spatial hashing
+Tim Kerchmar - spatial hashing  
 http://nightschool.near-time.net/news/2007/8/8/broad-or-narrow-the-sword-is-sharp
 
-Paul Bourke - line line intersection
+Paul Bourke - line line intersection  
 http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/
 
-Metanet forum user Derakon - circle line intersection
+Metanet forum user Derakon - circle line intersection  
 http://metanet.2.forumer.com/index.php?showtopic=17590
