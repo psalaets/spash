@@ -1,17 +1,8 @@
 spash - basic 2D shape overlap and ray library
 ==============================================
 
-Requirements
-------------
-
+- MIT license
 - Java 5 or higher
-
-License
--------
-
-Most of the code is under the MIT license - see LICENSE.  The parts under other
-licenses (BSD) or by other people have license blocks at the top of the relevant
-source files.
 
 Usage
 -----

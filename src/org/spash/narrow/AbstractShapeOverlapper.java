@@ -1,4 +1,6 @@
 /*
+ * The MIT License
+ * 
  * Copyright (c) 2006 Laurent Cozic
  *
  * Permission is hereby granted, free of charge, to any person
