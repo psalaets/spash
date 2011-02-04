@@ -50,17 +50,20 @@ public class SortAndSweep implements BroadPhase {
         sort(bodies, axis);
     }
     
+    /*
+     * Assumes bodies are already sorted along the axis
+     */
     private Set<Pair> sweepForPairs() {
         Set<Pair> pairs = new HashSet<Pair>();
         for(int i = 0; i < bodies.size(); i++) {
-            //for each body
+            //for each body I
             Body bodyI = bodies.get(i);
             for(int j = i + 1; j < bodies.size(); j++) {
-                //pair with every body after it
+                //and every body J after it on the axis
                 Body bodyJ = bodies.get(j);
-                if(axis.innerEdgesOverlap(bodyI, bodyJ)) {
+                if(axis.innerEdgesOverlap(bodyI, bodyJ)) { //pair I and J
                     pairs.add(new Pair(bodyI, bodyJ));
-                } else { //until the bodies are past the current body
+                } else { //until we find a J that is past I
                     break;
                 }
             }
