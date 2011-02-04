@@ -1,8 +1,11 @@
 package org.spash.broad.hash;
 
+import static java.util.Collections.emptyList;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -90,13 +93,21 @@ public strictfp class SpatialHash implements BroadPhase, RayBroadPhase {
     public Set<Body> potentialBodies(Ray ray) {
         Set<Body> bodies = new HashSet<Body>();
         for(GridCoordinate coord : span(ray).getCoordinates(cellSize, cellSize)) {
-            bodies.addAll(cellAt(coord).getBodies());
+            bodies.addAll(bodiesAt(coord));
         }
         return bodies;
     }
 
     private Span span(Ray ray) {
         return spanFactory.createRaySpan(ray);
+    }
+
+    private List<Body> bodiesAt(GridCoordinate coord) {
+        Cell cell = hash.get(coord);
+        if(cell != null) {
+            return cell.getBodies();
+        }
+        return emptyList();
     }
 
     @Override
