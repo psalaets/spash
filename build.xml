@@ -3,7 +3,7 @@
   <description>basic 2D shape overlap and ray library</description>
 
   <property name="project.name" value="spash" />
-  <property name="version" value="0.2" />
+  <property name="version" value="0.3" />
   <property name="name.and.version" value="${project.name}-${version}" />
   
   <property name="jar.file" value="${name.and.version}.jar" />
