@@ -1,7 +1,8 @@
 package org.spash.broad.sortsweep;
 
+import static java.util.Collections.sort;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +47,7 @@ public class SortAndSweep implements BroadPhase {
     }
 
     private void sortAlongAxis() {
-        Collections.sort(bodies, axis);
+        sort(bodies, axis);
     }
     
     private Set<Pair> sweepForPairs() {
