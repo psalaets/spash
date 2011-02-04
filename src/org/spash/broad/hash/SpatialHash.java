@@ -90,8 +90,7 @@ public strictfp class SpatialHash implements BroadPhase, RayBroadPhase {
     public Set<Body> potentialBodies(Ray ray) {
         Set<Body> bodies = new HashSet<Body>();
         for(GridCoordinate coord : span(ray).getCoordinates(cellSize, cellSize)) {
-            Cell cell = cellAt(coord);
-            bodies.addAll(cell.getBodies());
+            bodies.addAll(cellAt(coord).getBodies());
         }
         return bodies;
     }
