@@ -50,10 +50,13 @@ public strictfp class SpatialHash implements BroadPhase, RayBroadPhase {
     }
 
     public void add(Body body) {
-        Span span = spanFactory.createShapeSpan(body.getShape());
-        for(GridCoordinate coord : span.getCoordinates(cellSize, cellSize)) {
+        for(GridCoordinate coord : span(body).getCoordinates(cellSize, cellSize)) {
             cellAt(coord).add(body);
         }
+    }
+
+    private Span span(Body body) {
+        return spanFactory.createShapeSpan(body.getShape());
     }
 
     /**
@@ -86,12 +89,15 @@ public strictfp class SpatialHash implements BroadPhase, RayBroadPhase {
 
     public Set<Body> potentialBodies(Ray ray) {
         Set<Body> bodies = new HashSet<Body>();
-        Span span = spanFactory.createRaySpan(ray);
-        for(GridCoordinate coord : span.getCoordinates(cellSize, cellSize)) {
+        for(GridCoordinate coord : span(ray).getCoordinates(cellSize, cellSize)) {
             Cell cell = cellAt(coord);
             bodies.addAll(cell.getBodies());
         }
         return bodies;
+    }
+
+    private Span span(Ray ray) {
+        return spanFactory.createRaySpan(ray);
     }
 
     @Override
